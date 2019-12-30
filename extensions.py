@@ -191,7 +191,9 @@ class MutexAPScheduler(APScheduler):
         self._scheduler = MutexBackgroundScheduler(jobstores=Config.SCHEDULER_JOBSTORES,
                                                    executors=Config.SCHEDULER_EXECUTORS,
                                                    job_defaults=Config.SCHEDULER_JOB_DEFAULTS,
-                                                   timezone=utc)
+                                                   #replace the utc with timezone('Asia/Shanghai').
+                                                   timezone=pytz.timezone('Asia/Shanghai'))
+                                                   #timezone=utc)
 
 
 scheduler = MutexAPScheduler()
